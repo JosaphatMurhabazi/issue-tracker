@@ -3,8 +3,8 @@ import {z} from 'zod';
 import {prisma} from "@/prisma/client";
 
 const IssueSchema = z.object({
-    title: z.string().min(5).max(255),
-    description: z.string().min(5),
+    title: z.string().min(5,'Title is required').max(255),
+    description: z.string().min(5,'Description is required').max(255),
 })
 
 export async function POST(request:NextRequest){
