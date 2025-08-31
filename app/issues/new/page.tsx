@@ -28,28 +28,28 @@ const NewIssuePage = () => {
     const [error, setError] = useState<string>('');
     const [isSubmitting, setSubmitting] = useState<boolean>(false);
 
+    const onSubmit = handleSubmit(async(data)=>{
+        try{
+            setSubmitting(true);
+            await axios.post("/api/issues",data);
+            router.push("/issues")
+        }catch (error){
+            setSubmitting(false);
+            setError('An unexpected error occurred.');
+        }
+    })
+
     return (
         <div className='max-w-xl'>
             {error && (
                 <Callout.Root color='red' className='mb-5'>
                     <Callout.Text>{error}</Callout.Text>
                 </Callout.Root>)}
-        <form className='space-y-3' onSubmit={handleSubmit(async(data)=>{
-            try{
-                setSubmitting(true);
-                await axios.post("/api/issues",data);
-                router.push("/issues")
-            }catch (error){
-                setSubmitting(false);
-                setError('An unexpected error occurred.');
-            }
-
-        })}>
+        <form className='space-y-3' onSubmit={onSubmit}>
             <TextField.Root placeholder='Title' {...register('title')}></TextField.Root>
             {<ErrorMessage>{errors.title?.message}</ErrorMessage>}
             <Controller control={control}  name='description' render={({field})=><SimpleMDE placeholder='Description' {...field} />} />
             {<ErrorMessage>{errors.description?.message}</ErrorMessage>}
-
 
             <Button disabled={isSubmitting}>Submit New Issue {isSubmitting && <Spinner/>}</Button>
         </form></div>
