@@ -1,6 +1,6 @@
 import {prisma} from "@/prisma/client";
 import {notFound} from "next/navigation";
-import EditIssueForm from "@/app/issues/[id]/edit/EditIssueForm";
+import EditIssueForm from "@/app/issues/edit/EditIssueForm";
 
 interface Props{
     params:{id:string}
