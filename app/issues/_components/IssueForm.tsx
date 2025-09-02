@@ -2,7 +2,6 @@
 import React, {useState} from 'react'
 import axios from "axios";
 import {Button, Callout, TextField} from "@radix-ui/themes"
-import dynamic from 'next/dynamic'
 import "easymde/dist/easymde.min.css"
 import {Controller, useForm} from "react-hook-form";
 import {useRouter} from "next/navigation";
@@ -32,7 +31,7 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
                 await axios.post("/api/issues",data);
             router.push("/issues")
             router.refresh()
-        }catch (error){
+        }catch (_){
             setSubmitting(false);
             setError('An unexpected error occurred.');
         }
