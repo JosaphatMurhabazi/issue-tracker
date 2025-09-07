@@ -1,8 +1,14 @@
 import {NextRequest, NextResponse} from "next/server";
 import {prisma} from "@/prisma/client";
 import {issueSchema} from "@/app/validationSchema";
+import {auth} from "@/auth";
 
 export async function PATCH(request:NextRequest,{params}:{params:{id:string}}){
+    const session = await auth();
+    if (!session) {
+        return NextResponse.json({ message: "You are not authenticated." }, { status: 401 });
+    }
+
     const body = await request.json();
     const validation = issueSchema.safeParse(body);
     if(!validation.success)
@@ -24,6 +30,11 @@ export async function PATCH(request:NextRequest,{params}:{params:{id:string}}){
 }
 
 export async function DELETE(request:NextRequest,{params}:{params:{id:string}}){
+    const session = await auth();
+    if (!session) {
+        return NextResponse.json({ message: "You are not authenticated." }, { status: 401 });
+    }
+
     const issue = await prisma.issue.findUnique({where:{id:parseInt(params.id)}});
     if(!issue)
         return NextResponse.json({error:'Invalid issue'},{status:404});
