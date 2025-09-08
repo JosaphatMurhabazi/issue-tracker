@@ -26,7 +26,7 @@ const AssigneeSelect = ({issue}:{issue:Issue}) => {
         <>
             <Select.Root defaultValue={issue.assignedToUserId || 'unassigned'}
             onValueChange={assignIssue}>
-            <Select.Trigger aria-placeholder='Assign...'/>
+            <Select.Trigger placeholder='Assign...'/>
             <Select.Content>
                 <Select.Group>
                     <Select.Label>Suggestions</Select.Label>
