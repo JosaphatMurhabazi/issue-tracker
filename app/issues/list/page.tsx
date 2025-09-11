@@ -30,7 +30,7 @@ const IssuesPage = async ({searchParams}: Props) => {
             <Table.Root variant='surface'>
                 <Table.Header>
                     <Table.Row>
-                        {columns.map(column => <Table.ColumnHeaderCell key={column.value}>
+                        {columns.map(column => <Table.ColumnHeaderCell key={column.value} className={column.className}>
                             <NextLink href={`/issues/list?orderBy=${column.value}`}>{column.label}</NextLink>
                             {column.value===searchParams.orderBy && <ArrowUpIcon className='inline'/>}
                         </Table.ColumnHeaderCell>)}
