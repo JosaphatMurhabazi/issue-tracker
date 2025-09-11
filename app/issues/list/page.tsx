@@ -14,7 +14,7 @@ const IssuesPage = async ({searchParams}: Props) => {
     const columns:{label:string, value:keyof Issue,className?:string}[] = [
         {label:'Issue',value:'title'},
         {label:'Status',value:'status',className:'hidden md:table-cell'},
-        {label:'Created',value:'createAt', className:'hidden md:table-cell'},
+        {label:'Created',value:'createdAt', className:'hidden md:table-cell'},
     ]
 
     const statuses =Object.values(Status);
@@ -45,7 +45,7 @@ const IssuesPage = async ({searchParams}: Props) => {
                                 </Table.Cell>
                                 <Table.Cell className='hidden md:table-cell'><IssueStatusBadge
                                     status={issue.status}/></Table.Cell>
-                                <Table.Cell className='hidden md:table-cell'>{issue.createAt.toDateString()}</Table.Cell>
+                                <Table.Cell className='hidden md:table-cell'>{issue.createdAt.toDateString()}</Table.Cell>
                             </Table.Row>
                         )
                     )}
