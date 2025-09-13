@@ -7,7 +7,11 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
+<<<<<<< HEAD
     "postinstall": "prisma generate && prisma migrate deploy"
+=======
+    "postinstall": "prisma generate"
+>>>>>>> 5e1db345946b0de466226648f191159f968ac6af
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.10.0",
