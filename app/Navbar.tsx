@@ -2,10 +2,9 @@
 import React from 'react'
 import {usePathname} from "next/navigation";
 import Link from "next/link";
-import { FaBug } from "react-icons/fa";
-import classNames from "classnames";
+import {FaBug} from "react-icons/fa";
 import {useSession} from "next-auth/react";
-import {Box, Container, Flex, DropdownMenu, Avatar, Text} from "@radix-ui/themes";
+import {Avatar, Box, Container, DropdownMenu, Flex, Text} from "@radix-ui/themes";
 import {Skeleton} from "@/app/components";
 
 const Navbar = () => {
